@@ -1,7 +1,7 @@
 # IoT-Project
 
 ## Lab1: ##
-+Hello World 
++ Hello World 
 + LED setting
 + 控制亮度
 + 手動更改亮度
