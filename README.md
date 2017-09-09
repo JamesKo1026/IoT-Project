@@ -32,3 +32,6 @@
 + practice1:利用溫溼度感測器與LCD顯示溫度
 + practice2:利用Bluetooth app顯示溫溼度
 + practice3:連結Bluetooth下指令於LCD上顯示
+
+## Final Project: ##
++ 利用mindwave腦波儀結合蜂鳴器與紅外線遙控去實現個人音樂製作
