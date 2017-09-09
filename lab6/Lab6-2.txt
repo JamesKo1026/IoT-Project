@@ -1,0 +1,32 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BTserial(10,11); 
+ 
+char c=' ';
+ 
+void setup() 
+{
+
+    Serial.begin(9600);
+
+    BTserial.begin(38400);  
+
+}
+ 
+void loop()
+{
+ 
+     // Read from HC-05 and send to Arduino Serial Monitor
+    if (BTserial.available())
+    {  
+        
+        Serial.write(BTserial.read());
+    }
+ 
+    // Read from Arduino Serial Monitor and send to HC-05
+    if (Serial.available())
+    {
+        
+        BTserial.write(Serial.read());  
+    }
+ 
+}

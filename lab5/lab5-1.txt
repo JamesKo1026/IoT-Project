@@ -1,0 +1,33 @@
+#include <boarddefs.h>
+#include <ir_Lego_PF_BitStreamEncoder.h>
+#include <IRremote.h>
+#include <IRremoteInt.h>
+
+
+
+int r_pin=8;
+int red_pin=11;
+IRrecv irrecv(red_pin);
+decode_results result;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(r_pin,OUTPUT);
+  pinMode(red_pin,OUTPUT);
+  Serial.begin(115200);
+  irrecv.enableIRIn();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  //Serial.print(red_pin);
+  if(irrecv.decode(&result))
+  {
+     digitalWrite(r_pin,HIGH);
+     delay(1000);
+     digitalWrite(r_pin,LOW);
+     delay(1000);
+     irrecv.resume();
+  }
+}
+

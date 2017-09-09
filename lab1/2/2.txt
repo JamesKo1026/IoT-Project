@@ -1,0 +1,35 @@
+int brightness = 0;
+int fadeAmount = 5;
+int val;
+int ledpin=9;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(ledpin,OUTPUT);
+}
+
+void loop()
+{
+  val=Serial.read();
+  if(val=='H')
+  {
+    digitalWrite(ledpin,HIGH);
+    delay(10);
+    Serial.println("LED High");
+  }
+  else if(val=='M')
+  {
+    
+  analogWrite(9,128);
+  brightness = brightness + fadeAmount;
+  delay(10);
+  Serial.println("LED MED");
+  }
+  else if(val=='L')
+  {
+    digitalWrite(ledpin,LOW);
+    delay(10);
+    Serial.println("LED LOW");
+  }
+}

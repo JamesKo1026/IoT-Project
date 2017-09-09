@@ -1,0 +1,25 @@
+int val;
+int ledpin=13;
+
+void setup()
+{
+	Serial.begin(9600);
+	pinMode(ledpin,OUTPUT);
+}
+
+void loop()
+{
+	val=Serial.read();
+	if(val=='Y')
+	{
+		digitalWrite(ledpin,HIGH);
+		delay(500);
+		Serial.println("LED on");
+	}
+	else if(val=='N')
+	{
+		digitalWrite(ledpin,LOW);
+		delay(500);
+		Serial.println("LED off");
+	}
+}

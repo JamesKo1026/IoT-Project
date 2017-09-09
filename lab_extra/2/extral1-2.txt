@@ -1,0 +1,52 @@
+const int lm35Vout=0;
+const int r=13;
+const int g=12;
+const int y=11;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(r,OUTPUT);
+  pinMode(g,OUTPUT);
+  pinMode(y,OUTPUT);
+  digitalWrite(r,LOW);
+  digitalWrite(g,LOW);
+  digitalWrite(y,LOW);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  long degree;
+  degree=lm35(lm35Vout);
+  Serial.print("degree Celsius =");
+  Serial.print(degree);
+  Serial.println("c");
+  if(degree>=30)
+  {
+    digitalWrite(r,HIGH);
+    digitalWrite(g,LOW);
+    digitalWrite(y,LOW);
+  }
+  else if (degree>=27 &&degree<30)
+  {
+    digitalWrite(r,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(y,HIGH);
+  }
+  else if (degree<27)
+  {
+    digitalWrite(g,HIGH);
+     digitalWrite(r,LOW);
+     digitalWrite(y,LOW);
+  }
+ 
+  delay(1000);
+}
+long lm35(int lm35Vout)
+{
+  int value;
+  int degree;
+  value=analogRead(lm35Vout);
+  degree=(long)value*500/1024;
+  return degree;
+}

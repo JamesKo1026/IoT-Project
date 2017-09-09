@@ -1,0 +1,25 @@
+#include <Servo.h>
+
+Servo myservo;
+
+int j_x=0;
+int j_y=1;
+int j_z=3;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(j_x,INPUT);
+  pinMode(j_y,INPUT); 
+  pinMode(j_z,INPUT);
+  Serial.begin(9600);
+  myservo.attach(9);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int val;
+  val=analogRead(j_x);
+  val=map(val,0,1023,0,180);
+  myservo.write(val);
+  delay(100);
+}

@@ -1,0 +1,42 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BTSerial(0,1);
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(13,OUTPUT);
+
+  
+  Serial.begin(9600);
+  Serial.println("Enter AT commands:");
+  BTSerial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if(BTSerial.available()){
+  /*
+    Serial.write(BTSerial.read());
+
+  if(Serial.available())
+    BTSerial.write(Serial.read());
+   */
+  unsigned char c=Serial.read();
+  switch(c){
+    case'1':
+      digitalWrite(13,HIGH);
+      Serial.println(" Arduino Led On");
+      break;
+    case '0':
+      digitalWrite(13,LOW);
+      Serial.println(" Arduino Led Off");
+      break;
+    default:
+      break;
+  }
+  Serial.flush();
+  
+  }
+  
+  delay(10);
+}
